@@ -10,11 +10,11 @@ class Sertifikasi extends Model
 {
     use HasFactory;
 
-    protected $guards = [];
+    protected $with = ['user'];
 
     protected $fillable = ['nama','deskripsi','institusi','tingkat','tanggal','bukti'];
 
-    public function users(){
+    public function user(){
     	return	$this->belongsTo(User::class);
     }
 }

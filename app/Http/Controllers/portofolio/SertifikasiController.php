@@ -5,6 +5,8 @@ namespace App\Http\Controllers\portofolio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Sertifikasi;
+use App\Http\Resources\SertifikasiResource;
+use App\Http\Resources\SertifikasiCollection;
 
 class SertifikasiController extends Controller
 {
@@ -15,8 +17,8 @@ class SertifikasiController extends Controller
      */
     public function index()
     {
-        $Sertifikasi = Sertifikasi::latest()->get();
-        return response()->json(['sertifikasi' => $Sertifikasi]);
+        $Sertifikasi = Sertifikasi::latest()->paginate(5);
+        return new SertifikasiCollection($Sertifikasi);
     }
 
     /**
@@ -59,9 +61,9 @@ class SertifikasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Sertifikasi $sertifikasi)
     {
-        //
+        return new SertifikasiResource($sertifikasi);
     }
 
     /**
@@ -73,7 +75,7 @@ class SertifikasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
