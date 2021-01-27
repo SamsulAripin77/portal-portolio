@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
      DB::table('users')->insert([
      	'name' => 'admin',
 		'email' => 'admin@gmail.com',
+		'username' => 'admin@gmail.com',
 		'password' => Hash::make('password'),
 		'jurusan' => 'teknik informatika',
 		'website' => 'samsularipin77.github.io',
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
      DB::table('users')->insert([
      	'name' => 'user1',
 		'email' => 'user1@gemail.com',
+		'username' => 'user1@gemail.com',
 		'password' => Hash::make('password'),
 		'jurusan' => 'teknik informatika',
 		'website' => 'samsularipin77.github.io',
@@ -36,6 +38,7 @@ class UserSeeder extends Seeder
      DB::table('users')->insert( [
      	'name' => 'user2',
 		'email' => 'user2@gemail.com',
+		'username' => 'user2@gemail.com',
 		'password' => Hash::make('password'),
 		'jurusan' => 'teknik elektro',
 		'website' => 'samsularipin77.github.io',
@@ -45,6 +48,7 @@ class UserSeeder extends Seeder
      DB::table('users')->insert([
      	'name' => 'reviewer',
 		'email' => 'reviewer@gemail.com',
+		'username' => 'reviewer@gemail.com',
 		'password' => Hash::make('password'),
 		'jurusan' => 'teknik informatika',
 		'website' => 'samsularipin77.github.io',
