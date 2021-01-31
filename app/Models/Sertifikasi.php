@@ -12,7 +12,7 @@ class Sertifikasi extends Model
 
     protected $with = ['user'];
 
-    protected $fillable = ['nama','deskripsi','institusi','tingkat','tanggal','bukti'];
+    protected $fillable = ['user_id','nama','deskripsi','institusi','tingkat','tanggal','bukti'];
 
     public function user(){
     	return	$this->belongsTo(User::class);

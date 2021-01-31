@@ -18,7 +18,7 @@ class SertifikasiController extends Controller
     public function index()
     {
         $Sertifikasi = Sertifikasi::latest()->paginate(5);
-        return new SertifikasiCollection($Sertifikasi);
+        return SertifikasiResource::collection($Sertifikasi);
     }
 
     /**
@@ -29,7 +29,7 @@ class SertifikasiController extends Controller
      */
     public function store(Request $request)
     {
-        // $bukti;
+        $user_id = 1;
         $request->validate([
             'nama' => ['required'],
             'deskripsi' => ['required'],
@@ -39,20 +39,19 @@ class SertifikasiController extends Controller
             'bukti' => ['required'],
         ]);
 
-        if($request->file('bukti')){
-            $bukti = $request->file('bukti')->store('bukti/sertifikasi','public');
-        }
-        
-        $sertifikasi = auth()->user()->sertifikasis()->create([
-            'nama' => $request->get('nama'),
-            'deskripsi' => $request->get('deskripsi'),
-            'institusi' => $request->get('institusi'),
-            'tingkat' => $request->get('tingkat'),
-            'tanggal' => $request->get('tanggal'),
-            'bukti' => 'hjghj',
-        ]);
-
-        return response()->json(['bukti' => $sertifikasi]);
+        $bukti = $request->file('bukti')->store('bukti/sertifikasi','public');
+        $sertifikasi = New Sertifikasi;
+ 
+        $sertifikasi->user_id = 1;
+        $sertifikasi->nama =$request->get('nama');
+        $sertifikasi->deskripsi =$request->get('deskripsi');
+        $sertifikasi->institusi = $request->get('institusi');
+        $sertifikasi->tingkat =$request->get('tingkat');
+        $sertifikasi->tanggal =$request->get('tanggal');
+        $sertifikasi->bukti = $bukti;
+   
+        $sertifikasi->save();
+        return new SertifikasiResource($sertifikasi);
     }
 
     /**
@@ -75,7 +74,26 @@ class SertifikasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+         $request->validate([
+            'nama' => ['required'],
+            'deskripsi' => ['required'],
+            'institusi' => ['required'],
+            'tingkat' => ['required'],
+            'tanggal' => ['required'],
+            'bukti' => ['required'],
+        ]);
+
+        $bukti = $request->file('bukti')->store('bukti/sertifikasi','public');
+        $sertifikasi = auth()->user()->sertifikasis()->create([
+            'nama' => $request->get('nama'),
+            'deskripsi' => $request->get('deskripsi'),
+            'institusi' => $request->get('institusi'),
+            'tingkat' => $request->get('tingkat'),
+            'tanggal' => $request->get('tanggal'),
+            'bukti' => $bukti,
+        ]);
+
+        return new SertifikasiResource($sertifikasi);
     }
 
     /**

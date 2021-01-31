@@ -30,6 +30,6 @@ class SertifikasiResource extends JsonResource
 
     public function with($request)
     {
-        return ['status' => 'sukses'];
+        return ['message' => 'sukses'];
     }
 }
