@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Sertifikasi;
 use App\Http\Resources\SertifikasiResource;
-use App\Http\Resources\SertifikasiCollection;
-use Auth;
+use Storage;
 
 class SertifikasiController extends Controller
 {
@@ -83,10 +82,8 @@ class SertifikasiController extends Controller
     {
         $sertifikasi->status = $request->get('status');
         $sertifikasi->komentar = $request->get('komentar');      
-
-
         $sertifikasi->save();
-        return response()->json($request->all());
+        return new SertifikasiResource($sertifikasi);
     }
 
     /**
@@ -102,6 +99,9 @@ class SertifikasiController extends Controller
         }
         else {
             $sertifikasi->delete();
+            if($sertifikasi->bukti && file_exists(storage_path('app/public/' . $sertifikasi->gambar))){
+                Storage::delete('public/'.$sertifikasi->bukti);
+            }
         }
 
         return new SertifikasiResource($sertifikasi);
