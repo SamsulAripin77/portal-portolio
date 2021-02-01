@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Sertifikasi;
 use App\Http\Resources\SertifikasiResource;
 use App\Http\Resources\SertifikasiCollection;
+use Auth;
 
 class SertifikasiController extends Controller
 {
@@ -17,7 +18,7 @@ class SertifikasiController extends Controller
      */
     public function index()
     {
-        $Sertifikasi = Sertifikasi::latest()->paginate(5);
+        $Sertifikasi = Sertifikasi::latest()->paginate(10);
         return SertifikasiResource::collection($Sertifikasi);
     }
 
@@ -42,7 +43,7 @@ class SertifikasiController extends Controller
         $bukti = $request->file('bukti')->store('bukti/sertifikasi','public');
         $sertifikasi = New Sertifikasi;
  
-        $sertifikasi->user_id = 1;
+        $sertifikasi->user_id = auth()->user()->id;
         $sertifikasi->nama =$request->get('nama');
         $sertifikasi->deskripsi =$request->get('deskripsi');
         $sertifikasi->institusi = $request->get('institusi');
@@ -102,8 +103,10 @@ class SertifikasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Sertifikasi $sertifikasi)
     {
-        //
+        $sertifikasi->delete();
+
+        return new SertifikasiResource($sertifikasi);
     }
 }

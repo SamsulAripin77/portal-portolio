@@ -16,6 +16,7 @@ class SertifikasiResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
+            'id' => $this->id,
             'nama' => $this->nama,
             'deskripsi' => $this->deskripsi,
             'tingkat' => $this->tingkat,
