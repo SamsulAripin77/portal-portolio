@@ -20,10 +20,10 @@ class MagangController extends Controller
         if (auth()->user()->role == 'admin') {
             $sertifikasi = Magang::latest()->paginate(10);
         } else {
-            $sertifikasi = auth()->user()->sertifikasis;
+            $sertifikasi = auth()->user()->magang;
         }
 
-        return MagangResource::collection($sertifikasi);
+        return MagangResource::collection($magang);
     }
 
     /**
@@ -40,8 +40,6 @@ class MagangController extends Controller
             'institusi' => 'required',
             'tgl_mulai' => 'required',
             'tgl_selesai' => 'required',
-            'status' => 'required',
-            'komentar' => 'required',
         ]);
         $magang->user_id = auth()->user()->id;
         $magang->deskripsi = $request->get('deskripsi');

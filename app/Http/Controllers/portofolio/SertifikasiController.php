@@ -17,7 +17,6 @@ class SertifikasiController extends Controller
      */
     public function index(Sertifikasi $sertifikasi)
     {
-
         if (auth()->user()->role == 'admin'){
             $sertifikasi = Sertifikasi::latest()->paginate(10);
         }

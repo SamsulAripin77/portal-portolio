@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Sertifikasi;
 use App\Models\Magang;
+use App\Models\Karya;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -93,6 +94,11 @@ class User extends Authenticatable implements JWTSubject
     public function magangs()
     {
         return $this->hasMany(Magang::class);
+    }
+
+    public function karya()
+    {
+        return $this->hasMany(Karya::class);
     }
 
 }
