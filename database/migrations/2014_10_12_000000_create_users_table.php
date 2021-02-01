@@ -22,9 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('jurusan');
-            $table->string('website');
+            $table->string('website')->nullable();
             $table->enum('role',['user','reviewer','admin']);
-            $table->string('ipk');
+            $table->string('ipk')->nullable();
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
             $table->timestamps();

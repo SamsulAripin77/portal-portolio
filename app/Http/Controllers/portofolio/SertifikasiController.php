@@ -103,7 +103,6 @@ class SertifikasiController extends Controller
                 Storage::delete('public/'.$sertifikasi->bukti);
             }
         }
-
         return new SertifikasiResource($sertifikasi);
     }
 }

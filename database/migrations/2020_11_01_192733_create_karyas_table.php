@@ -19,8 +19,8 @@ class CreateKaryasTable extends Migration
             $table->string('nama');
             $table->string('deskripsi')->nullable();
             $table->date('tanggal');
-            $table->string('bukti');
-            $table->string('tautan');
+            $table->string('bukti')->nullable();
+            $table->string('tautan')->nullable();
             $table->enum('status',['menunggu','diterima','ditolak'])->nullable();
             $table->string('komentar')->nullable();
             $table->timestamps();

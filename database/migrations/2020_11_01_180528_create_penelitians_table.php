@@ -25,7 +25,7 @@ class CreatePenelitiansTable extends Migration
             $table->enum('dana',['mandiri','pemerintah','swasta']);
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
-            $table->string('bukti');
+            $table->string('bukti')->nullable();
             $table->string('tautan')->nullable();
             $table->enum('status',['menunggu','diterima','ditolak'])->nullable();
             $table->string('komentar')->nullable();

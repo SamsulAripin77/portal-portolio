@@ -24,7 +24,7 @@ class CreateKepanitiaansTable extends Migration
             $table->string('no_sk');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
-            $table->string('bukti');
+            $table->string('bukti')->nullable();
             $table->enum('status',['menunggu','diterima','ditolak'])->nullable();
             $table->string('komentar')->nullable();
             $table->timestamps();

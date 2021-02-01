@@ -20,7 +20,7 @@ class CreatePublikasisTable extends Migration
             $table->enum('kategori',['makalah','jurnal','paper','skripsi','tessis','desertasi','prosiding','lainnya']);
             $table->enum('tingkat',['nasional','internasional']);
             $table->string('tahun');
-            $table->string('bukti');
+            $table->string('bukti')->nullable();
             $table->string('tautan')->nullable();
             $table->enum('status',['menunggu','diterima','ditolak'])->nullable();
             $table->string('komentar')->nullable();
