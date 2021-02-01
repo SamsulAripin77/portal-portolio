@@ -11,6 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Sertifikasi;
+use App\Models\Magang;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -67,7 +68,7 @@ class User extends Authenticatable implements JWTSubject
     ];
 
 
-      public function getJWTIdentifier()
+    public function getJWTIdentifier()
     {
         return $this->getKey();
     }
@@ -84,7 +85,13 @@ class User extends Authenticatable implements JWTSubject
 
     //relational
 
-    public function sertifikasis(){
+    public function sertifikasis()
+    {
         return $this->hasMany(Sertifikasi::class);
+    }
+
+    public function magangs()
+    {
+        return $this->hasMany(Magang::class);
     }
 }
