@@ -26,6 +26,8 @@ class SertifikasiResource extends JsonResource
             'author_id' => $this->user_id,
             'author' => $this->user->name,
             'diajukan' => $this->created_at->diffForHumans(),
+            'status' => $this->status,
+            'komentar' => $this->komentar,
         ];
     }
 

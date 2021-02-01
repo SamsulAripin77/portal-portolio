@@ -21,6 +21,8 @@ class CreateMagangsTable extends Migration
             $table->string('institusi');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
+            $table->enum('status',['menunggu','diterima','ditolak'])->nullable();
+            $table->string('komentar')->nullable();
             $table->timestamps();
         });
     }

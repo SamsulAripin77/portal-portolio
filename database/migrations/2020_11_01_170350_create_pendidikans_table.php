@@ -22,6 +22,8 @@ class CreatePendidikansTable extends Migration
             $table->string('tahun_smp');
             $table->string('nama_sma');
             $table->string('tahun_sma');
+            $table->enum('status',['menunggu','diterima','ditolak'])->nullable();
+            $table->string('komentar')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

@@ -22,6 +22,8 @@ class CreatePublikasisTable extends Migration
             $table->string('tahun');
             $table->string('bukti');
             $table->string('tautan')->nullable();
+            $table->enum('status',['menunggu','diterima','ditolak'])->nullable();
+            $table->string('komentar')->nullable();
             $table->timestamps();
         });
     }

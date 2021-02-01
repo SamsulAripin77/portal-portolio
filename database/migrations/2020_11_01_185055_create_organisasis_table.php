@@ -20,6 +20,8 @@ class CreateOrganisasisTable extends Migration
             $table->string('jabatan');
             $table->string('tahun');
             $table->string('bukti');
+            $table->enum('status',['menunggu','diterima','ditolak'])->nullable();
+            $table->string('komentar')->nullable();
             $table->timestamps();
         });
     }

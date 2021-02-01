@@ -24,6 +24,8 @@ class CreatePengabdiansTable extends Migration
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
             $table->string('dana');
+            $table->enum('status',['menunggu','diterima','ditolak'])->nullable();
+            $table->string('komentar')->nullable();
             $table->timestamps();
         });
     }

@@ -17,8 +17,8 @@ class CreatePengajuansTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->integer('portofolio_id');
-            $table->enum('status',['menunggu','diterima','ditolak']);
-            $table->string('komentar');
+            $table->enum('status',['menunggu','diterima','ditolak'])->nullable();
+            $table->string('komentar')->nullable();
             $table->timestamps();
         });
     }

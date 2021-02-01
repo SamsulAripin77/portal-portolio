@@ -22,6 +22,8 @@ class CreateSertifikasisTable extends Migration
             $table->enum('tingkat',['regional','nasional','internasional']);
             $table->date('tanggal');
             $table->string('bukti');
+            $table->enum('status',['menunggu','diterima','ditolak'])->default('menunggu');
+            $table->string('komentar')->nullable();
             $table->timestamps();
         });
     }

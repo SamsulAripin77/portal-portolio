@@ -16,10 +16,17 @@ class SertifikasiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Sertifikasi $sertifikasi)
     {
-        $Sertifikasi = Sertifikasi::latest()->paginate(10);
-        return SertifikasiResource::collection($Sertifikasi);
+
+        if (auth()->user()->role == 'admin'){
+            $sertifikasi = Sertifikasi::latest()->paginate(10);
+        }
+        else{
+            $sertifikasi = auth()->user()->sertifikasis;
+        }
+
+        return SertifikasiResource::collection($sertifikasi);
     }
 
     /**
@@ -28,9 +35,8 @@ class SertifikasiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Sertifikasi $sertifikasi)
     {
-        $user_id = 1;
         $request->validate([
             'nama' => ['required'],
             'deskripsi' => ['required'],
@@ -41,7 +47,7 @@ class SertifikasiController extends Controller
         ]);
 
         $bukti = $request->file('bukti')->store('bukti/sertifikasi','public');
-        $sertifikasi = New Sertifikasi;
+        $sertifikasi;
  
         $sertifikasi->user_id = auth()->user()->id;
         $sertifikasi->nama =$request->get('nama');
@@ -73,28 +79,14 @@ class SertifikasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Sertifikasi $sertifikasi)
     {
-         $request->validate([
-            'nama' => ['required'],
-            'deskripsi' => ['required'],
-            'institusi' => ['required'],
-            'tingkat' => ['required'],
-            'tanggal' => ['required'],
-            'bukti' => ['required'],
-        ]);
+        $sertifikasi->status = $request->get('status');
+        $sertifikasi->komentar = $request->get('komentar');      
 
-        $bukti = $request->file('bukti')->store('bukti/sertifikasi','public');
-        $sertifikasi = auth()->user()->sertifikasis()->create([
-            'nama' => $request->get('nama'),
-            'deskripsi' => $request->get('deskripsi'),
-            'institusi' => $request->get('institusi'),
-            'tingkat' => $request->get('tingkat'),
-            'tanggal' => $request->get('tanggal'),
-            'bukti' => $bukti,
-        ]);
 
-        return new SertifikasiResource($sertifikasi);
+        $sertifikasi->save();
+        return response()->json($request->all());
     }
 
     /**
@@ -105,7 +97,12 @@ class SertifikasiController extends Controller
      */
     public function destroy(Sertifikasi $sertifikasi)
     {
-        $sertifikasi->delete();
+        if ($sertifikasi->status == 'menunggu'){
+            return response()->json(['message' => 'tidak dapat menghapus data sebelum diperiksa']);
+        }
+        else {
+            $sertifikasi->delete();
+        }
 
         return new SertifikasiResource($sertifikasi);
     }

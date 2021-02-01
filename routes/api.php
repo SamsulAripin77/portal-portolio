@@ -21,6 +21,11 @@ use App\Http\Controllers\portofolio\SertifikasiController;
 |
 */
 
+Route::group(['prefix' => 'portofolio','middleware' => 'auth:api'],function(){
+	Route::resource('sertifikasi',SertifikasiController::class);
+});
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

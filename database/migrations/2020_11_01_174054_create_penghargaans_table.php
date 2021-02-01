@@ -23,6 +23,8 @@ class CreatePenghargaansTable extends Migration
             $table->string('institusi');
             $table->enum('tingkat',['regional','nasional','internasional']);
             $table->string('bukti');
+            $table->enum('status',['menunggu','diterima','ditolak'])->nullable();
+            $table->string('komentar')->nullable();
             $table->timestamps();
 
         });
