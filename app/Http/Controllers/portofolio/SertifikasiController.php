@@ -47,7 +47,7 @@ class SertifikasiController extends Controller
         $bukti = $request->file('bukti')->store('bukti/sertifikasi','public');
         $sertifikasi;
  
-        $sertifikasi->user_id = auth()->user()->id;
+        $sertifikasi->user_id = 1;
         $sertifikasi->nama =$request->get('nama');
         $sertifikasi->deskripsi =$request->get('deskripsi');
         $sertifikasi->institusi = $request->get('institusi');
