@@ -41,7 +41,7 @@ Route::group(['prefix' => 'auth'],function(){
 });
 
 
-Route::group(['prefix' => 'portofolio','middleware' => 'auth:api'],function(){
+Route::group(['prefix' => 'portofolio'],function(){
 	Route::resource('sertifikasi',SertifikasiController::class);
 });
 
