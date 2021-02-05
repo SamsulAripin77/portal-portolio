@@ -23,7 +23,7 @@ class SertifikasiFactory extends Factory
     {
         return [
             // ['user_id','nama','deskripsi','institusi','tingkat','tanggal','bukti'];
-            'user_id' => $this->faker->randomElement([2,3]),
+            'user_id' => $this->faker->randomElement([2,3,4,5,6,7,8]),
             'nama' => $this->faker->randomElement(['junior web programmer', 'dicoding','IT Solution','Digitalent','Google Certificate']),
             'deskripsi' => $this->faker->text,
             'institusi' => $this->faker->randomElement(['kominfo','dicoding','kemenristek','kemenparekraf','kemnaker']),

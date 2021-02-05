@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     public function run()
     {
      DB::table('users')->insert([
-     	'name' => 'admin',
+		'name' => 'admin',
 		'email' => 'admin@gmail.com',
 		'username' => 'admin@gmail.com',
 		'password' => Hash::make('password'),
@@ -36,15 +36,75 @@ class UserSeeder extends Seeder
 		'ipk' => '3.73',
      ]);
      DB::table('users')->insert( [
-     	'name' => 'user2',
-		'email' => 'user2@gemail.com',
-		'username' => 'user2@gemail.com',
-		'password' => Hash::make('password'),
-		'jurusan' => 'teknik elektro',
-		'website' => 'samsularipin77.github.io',
-		'role' => 'user',
-		'ipk' => '3.73',
-     ]);
+		'name' => 'user2',
+	   'email' => 'user2@gemail.com',
+	   'username' => 'user2@gemail.com',
+	   'password' => Hash::make('password'),
+	   'jurusan' => 'teknik elektro',
+	   'website' => 'samsularipin77.github.io',
+	   'role' => 'user',
+	   'ipk' => '3.73',
+	]);
+	DB::table('users')->insert( [
+	   'name' => 'user3',
+	   'email' => 'user3@gemail.com',
+	   'username' => 'user3@gemail.com',
+	   'password' => Hash::make('password'),
+	   'jurusan' => 'teknik elektro',
+	   'website' => 'samsularipin77.github.io',
+	   'role' => 'user',
+	   'ipk' => '3.73',
+	]);
+	DB::table('users')->insert( [
+		'name' => 'user4',
+	   'email' => 'user4@gemail.com',
+	   'username' => 'user4@gemail.com',
+	   'password' => Hash::make('password'),
+	   'jurusan' => 'teknik elektro',
+	   'website' => 'samsularipin77.github.io',
+	   'role' => 'user',
+	   'ipk' => '3.73',
+	]);
+	DB::table('users')->insert( [
+		'name' => 'user5',
+	   'email' => 'user5@gemail.com',
+	   'username' => 'user5@gemail.com',
+	   'password' => Hash::make('password'),
+	   'jurusan' => 'teknik elektro',
+	   'website' => 'samsularipin77.github.io',
+	   'role' => 'user',
+	   'ipk' => '3.73',
+	]);
+	DB::table('users')->insert( [
+		'name' => 'user6',
+	   'email' => 'user6@gemail.com',
+	   'username' => 'user6@gemail.com',
+	   'password' => Hash::make('password'),
+	   'jurusan' => 'teknik elektro',
+	   'website' => 'samsularipin77.github.io',
+	   'role' => 'user',
+	   'ipk' => '3.73',
+	]);
+	DB::table('users')->insert( [
+		'name' => 'user7',
+	   'email' => 'user7@gemail.com',
+	   'username' => 'user7@gemail.com',
+	   'password' => Hash::make('password'),
+	   'jurusan' => 'teknik elektro',
+	   'website' => 'samsularipin77.github.io',
+	   'role' => 'user',
+	   'ipk' => '3.73',
+	]);
+	DB::table('users')->insert( [
+		'name' => 'user8',
+	   'email' => 'user8@gemail.com',
+	   'username' => 'user8@gemail.com',
+	   'password' => Hash::make('password'),
+	   'jurusan' => 'teknik elektro',
+	   'website' => 'samsularipin77.github.io',
+	   'role' => 'user',
+	   'ipk' => '3.73',
+	]);
      DB::table('users')->insert([
      	'name' => 'reviewer',
 		'email' => 'reviewer@gemail.com',
