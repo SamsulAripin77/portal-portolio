@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controller\Auth\RegisterController;
+use App\Http\Controllers\admin\SertifikasiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +15,13 @@ use App\Http\Controller\Auth\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('sertifikasi/list');
 });
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-
+Route::resource('/sertifikasi',SertifikasiController::class);
 

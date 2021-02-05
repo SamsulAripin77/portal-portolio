@@ -1,5 +1,5 @@
 @extends('layouts.backend')
 
 @section('content')
-    dari dasboard ok
+    dari dasboard
 @endsection

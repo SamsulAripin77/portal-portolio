@@ -14,7 +14,7 @@ class Sertifikasi extends Model
 
     protected $fillable = ['user_id','nama','deskripsi','institusi','tingkat','tanggal','bukti'];
 
-    public function user(){
+    public function User(){
     	return	$this->belongsTo(User::class);
     }
 }
