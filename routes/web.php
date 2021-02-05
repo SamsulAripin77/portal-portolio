@@ -15,13 +15,14 @@ use App\Http\Controllers\admin\SertifikasiController;
 */
 
 Route::get('/', function () {
-    return view('sertifikasi/list');
+    return view('welcome');
 });
 
 
+Route::resource('/sertifikasi',SertifikasiController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-Route::resource('/sertifikasi',SertifikasiController::class);
+
 
